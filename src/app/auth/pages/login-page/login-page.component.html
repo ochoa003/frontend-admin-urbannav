@@ -1,0 +1,43 @@
+<div class="container" [formGroup]="myForm"
+(ngSubmit)="login()" *ngIf="!estaEn2FA">
+    <div class="row">
+        <div class="col"></div>
+        <div class="col pt-5">
+            <h1 class="text-warning">UrbanNav</h1>
+            <h2>Iniciar sesión</h2>
+            <p>Hola administrador@!</p>
+            <form class="mt-4">
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Correo electrónico<strong class="text-danger">*</strong></label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Correo electrónico" formControlName="correo">
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputPassword1" class="form-label">Contraseña<strong class="text-danger">*</strong></label>
+                  <input type="password" class="form-control" id="exampleInputPassword1" placeholder="contraseña" formControlName="clave">
+                </div>
+                
+                <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+              </form>
+        </div>
+        <div class="col"></div>
+    </div>
+</div>
+
+<div class="container" *ngIf="estaEn2FA">
+  <h2>Autenticación de segundo factor</h2>
+  <div class="row">
+    <div class="col"></div>
+    <div class="col pt-5">
+        <h1 class="text-warning">UrbanNav</h1>
+        <form class="mt-4" [formGroup]="myForm2fa" (ngSubmit)="verificar2FA()">
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Código<strong class="text-danger">*</strong></label>
+              <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Código de 2FA" formControlName="codigo2fa">
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+          </form>
+    </div>
+    <div class="col"></div>
+</div>
+</div>

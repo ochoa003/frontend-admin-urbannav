@@ -1,0 +1,17 @@
+<div class="text-white">
+    <nav class="navbar bg-dark border-bottom border-body" data-bs-theme="dark">
+        
+        <div class="container-fluid">
+            <h2 class="text-white">UrbanNav</h2>
+            <div class="d-flex">
+                <!-- execute a logout button -->
+                <button class="btn btn-outline-light me-2" (click)="onLogout()">Logout</button>
+            </div>
+        </div>
+
+      </nav>
+<pre class="text-white">{{ user() | json }}</pre>
+
+    <router-outlet />
+</div>
+  
