@@ -19,8 +19,8 @@ export class LoginPageComponent {
   private router = inject( Router );
 
   public myForm: FormGroup = this.fb.group({
-    correo: ['dijopo2908@mkurg.com', [Validators.required, Validators.email]],
-    clave: ['piZFkpexkD', [Validators.required, Validators.minLength(6)]]
+    correo: ['danieldiazc413@gmail.com', [Validators.required, Validators.email]],
+    clave: ['yR8u5MR1pX', [Validators.required, Validators.minLength(6)]]
   });
 
   public myForm2fa: FormGroup = this.fb.group({

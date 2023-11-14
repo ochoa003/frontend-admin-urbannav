@@ -13,13 +13,13 @@ const routes: Routes = [
         path: 'login',
         component: LoginPageComponent
       },
-      {
-        path: 'register',
-        component: RegisterPageComponent
-      },
+      // {
+      //   path: 'register',
+      //   component: RegisterPageComponent
+      // },
       {
         path: '**',
-        redirectTo: 'register'
+        redirectTo: 'login'
       }
     ]
   }

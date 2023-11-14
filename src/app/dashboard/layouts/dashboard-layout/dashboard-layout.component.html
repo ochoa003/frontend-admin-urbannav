@@ -2,16 +2,87 @@
     <nav class="navbar bg-dark border-bottom border-body" data-bs-theme="dark">
         
         <div class="container-fluid">
-            <h2 class="text-white">UrbanNav</h2>
+            <h2 class="text-white">UrbanNav UC</h2> 
             <div class="d-flex">
                 <!-- execute a logout button -->
-                <button class="btn btn-outline-light me-2" (click)="onLogout()">Logout</button>
+                <button class="btn btn-outline-light me-2" (click)="onLogout()">Cerrar sesión</button>
             </div>
         </div>
 
       </nav>
-<pre class="text-white">{{ user() | json }}</pre>
+      <div class="container-fluid">
+        <h1 class="mt-2">Hola, administrador! </h1>
+        <pre class="text-white">{{ user() | json }}</pre>
 
-    <router-outlet />
+        <div class="row p-4">
+            <div class="col">
+                <h3 class="text-warning">Variables globales</h3>
+                <p class="text-white">Crear nuevas variable o actualizar las existentes</p>
+                <form>
+                    <div class="form-group">
+                        <input type="text" class="form-control mt-2" id="exampleFormControlInput1" placeholder="Nombre de la variable" formControlName="nombreVariable">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control mt-2" id="exampleFormControlInput1" placeholder="Valor de la variable" formControlName="valorVariable">
+                    </div>
+                    <!-- submit btn -->
+                    <button type="submit" class="btn btn-primary mt-2">Guardar</button>
+                </form>
+                <button class="btn btn-warning mt-2">Ver todas las variables</button>
+            </div>
+            <div class="col">
+                <h3 class="text-warning">Ciudades</h3>
+                <p class="text-white">Crear nuevas ciudades</p>
+                <form>
+                    <div class="form-group">
+                        <input type="text" class="form-control mt-2" id="exampleFormControlInput1" placeholder="Nombre de la variable" formControlName="nombreVariable">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control mt-2" id="exampleFormControlInput1" placeholder="Valor de la variable" formControlName="valorVariable">
+                    </div>
+                    <!-- submit btn -->
+                    <button type="submit" class="btn btn-primary mt-2">Guardar</button>
+                </form>
+                <button class="btn btn-warning mt-2">Ver todas las Ciudades</button>
+            </div>
+            <div class="col">
+                <h3 class="text-warning">Barrios</h3>
+                <p class="text-white">Crear nuevos barrios</p>
+                <form>
+                    <div class="form-group">
+                        <input type="text" class="form-control mt-2" id="exampleFormControlInput1" placeholder="Nombre de la variable" formControlName="nombreVariable">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control mt-2" id="exampleFormControlInput1" placeholder="Valor de la variable" formControlName="valorVariable">
+                    </div>
+                    <!-- submit btn -->
+                    <button type="submit" class="btn btn-primary mt-2">Guardar</button>
+                </form>
+                <button class="btn btn-warning mt-2">Ver todos los barrios</button>
+            </div>
+        </div>
+        <div class="row p-4">
+            <div class="col">
+                <h3 class="text-warning">Recorridos</h3>
+                <p class="text-white">Crear nuevos recorridos</p>
+                <form>
+                    <div class="form-group">
+                        <input type="text" class="form-control mt-2" id="exampleFormControlInput1" placeholder="Nombre de la variable" formControlName="nombreVariable">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control mt-2" id="exampleFormControlInput1" placeholder="Valor de la variable" formControlName="valorVariable">
+                    </div>
+                    <!-- submit btn -->
+                    <button type="submit" class="btn btn-primary mt-2">Guardar</button>
+                </form>
+                <button class="btn btn-warning mt-2">Ver todos los recorridos</button>
+            </div>
+            <div class="col"></div>
+            <div class="col"></div>
+        </div>
+
+        <router-outlet />
+      </div>
+
 </div>
   
