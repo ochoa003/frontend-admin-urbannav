@@ -4,12 +4,22 @@ import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth/services/auth.service';
 import { DashboardServiceService } from '../../services/dashboard-service.service';
 import Swal from 'sweetalert2';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import { ModalComponent } from '../../components/modal/modal.component';
 
 @Component({
   templateUrl: './dashboard-layout.component.html',
   styleUrls: ['./dashboard-layout.component.css']
 })
 export class DashboardLayoutComponent {
+
+  bsModalRef!: BsModalRef;
+
+  private modalService = inject( BsModalService );
+
+  abrirModal() {
+    this.bsModalRef = this.modalService.show(ModalComponent);
+  }
 
   private authService = inject( AuthService );
   private dashboardService = inject( DashboardServiceService );

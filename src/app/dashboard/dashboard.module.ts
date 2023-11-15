@@ -5,7 +5,7 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardLayoutComponent } from './layouts/dashboard-layout/dashboard-layout.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ModalComponent } from './components/modal/modal.component';
-
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 @NgModule({
   declarations: [
@@ -16,6 +16,7 @@ import { ModalComponent } from './components/modal/modal.component';
     CommonModule,
     DashboardRoutingModule,
     ReactiveFormsModule,
+    ModalModule.forRoot()
   ]
 })
 export class DashboardModule { }

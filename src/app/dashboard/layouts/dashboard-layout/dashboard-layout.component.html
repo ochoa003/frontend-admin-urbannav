@@ -14,11 +14,9 @@
         <h1 class="mt-2">Hola, administrador! </h1>
         <pre class="text-white">{{ user() | json }}</pre>
 
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#miModal">
+        <button type="button" class="btn btn-primary" (click)="abrirModal()">
             Abrir Modal
           </button>
-
-          <app-modal></app-modal>
 
         <div class="row p-4">
             <div class="col">
