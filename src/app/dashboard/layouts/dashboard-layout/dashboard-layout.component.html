@@ -14,11 +14,17 @@
         <h1 class="mt-2">Hola, administrador! </h1>
         <pre class="text-white">{{ user() | json }}</pre>
 
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#miModal">
+            Abrir Modal
+          </button>
+
+          <app-modal></app-modal>
+
         <div class="row p-4">
             <div class="col">
                 <h3 class="text-warning">Variables globales</h3>
-                <p class="text-white">Crear nuevas variable o actualizar las existentes</p>
-                <form>
+                <p class="text-white">Crear nuevas variables o actualizar las existentes</p>
+                <form [formGroup]="myFormVariable" (ngSubmit)="onSubmitVariable()">
                     <div class="form-group">
                         <input type="text" class="form-control mt-2" id="exampleFormControlInput1" placeholder="Nombre de la variable" formControlName="nombreVariable">
                     </div>
@@ -33,12 +39,12 @@
             <div class="col">
                 <h3 class="text-warning">Ciudades</h3>
                 <p class="text-white">Crear nuevas ciudades</p>
-                <form>
+                <form [formGroup]="myFormCiudad" (ngSubmit)="onSubmitCiudad()">
                     <div class="form-group">
-                        <input type="text" class="form-control mt-2" id="exampleFormControlInput1" placeholder="Nombre de la variable" formControlName="nombreVariable">
+                        <input type="text" class="form-control mt-2" id="exampleFormControlInput1" placeholder="Nombre de la ciudad" formControlName="Nombre">
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control mt-2" id="exampleFormControlInput1" placeholder="Valor de la variable" formControlName="valorVariable">
+                        <input type="text" class="form-control mt-2" id="exampleFormControlInput1" placeholder="Descripción" formControlName="Descripcion">
                     </div>
                     <!-- submit btn -->
                     <button type="submit" class="btn btn-primary mt-2">Guardar</button>
@@ -46,39 +52,52 @@
                 <button class="btn btn-warning mt-2">Ver todas las Ciudades</button>
             </div>
             <div class="col">
+                
                 <h3 class="text-warning">Barrios</h3>
                 <p class="text-white">Crear nuevos barrios</p>
-                <form>
+                <form  [formGroup]="myFormBarrio" (ngSubmit)="onSubmitBarrio()">
                     <div class="form-group">
-                        <input type="text" class="form-control mt-2" id="exampleFormControlInput1" placeholder="Nombre de la variable" formControlName="nombreVariable">
+                        <input type="text" class="form-control mt-2" id="exampleFormControlInput1" placeholder="Nombre del barrio" formControlName="NombreBarrio">
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control mt-2" id="exampleFormControlInput1" placeholder="Valor de la variable" formControlName="valorVariable">
+                        <input type="text" class="form-control mt-2" id="exampleFormControlInput1" placeholder="Descripción del barrio" formControlName="Descripcion">
                     </div>
-                    <!-- submit btn -->
+
+                    <select class="form-select mt-2" aria-label="Default select example" formControlName="ciudadId">
+                        <option value="default">Selecciona una ciudad</option>
+                        <option *ngFor="let ciudad of this.ciudades()" [value]="ciudad.idCiudad" >{{ ciudad.Nombre }}</option>
+                      </select>
+
+                  
                     <button type="submit" class="btn btn-primary mt-2">Guardar</button>
                 </form>
                 <button class="btn btn-warning mt-2">Ver todos los barrios</button>
+               
             </div>
-        </div>
-        <div class="row p-4">
             <div class="col">
+                
                 <h3 class="text-warning">Recorridos</h3>
                 <p class="text-white">Crear nuevos recorridos</p>
-                <form>
+                <form  [formGroup]="myFormRecorrido" (ngSubmit)="onSubmitRecorrido()">
                     <div class="form-group">
-                        <input type="text" class="form-control mt-2" id="exampleFormControlInput1" placeholder="Nombre de la variable" formControlName="nombreVariable">
+                        <input type="number" class="form-control mt-2" id="exampleFormControlInput1" placeholder="Distancia en KM" formControlName="DistanciaKM">
                     </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control mt-2" id="exampleFormControlInput1" placeholder="Valor de la variable" formControlName="valorVariable">
-                    </div>
-                    <!-- submit btn -->
+
+                    <select class="form-select mt-2" aria-label="Default select example" formControlName="barrioOrigenId">
+                        <option value="default">Selecciona un barrio de origen<option>
+                        <option *ngFor="let barrio of this.barrios()" [value]="barrio.idBarrio" >{{ barrio.nombreBarrio }} - {{ barrio.ciudadId }}</option>
+                      </select>
+
+                    <select class="form-select mt-2" aria-label="Default select example" formControlName="barrioDestinoId">
+                        <option value="default">Selecciona un barrio de destino<option>
+                        <option *ngFor="let barrio of this.barrios()" [value]="barrio.idBarrio" >{{ barrio.nombreBarrio }} - {{ barrio.ciudadId }}</option>
+                      </select>
+
                     <button type="submit" class="btn btn-primary mt-2">Guardar</button>
                 </form>
                 <button class="btn btn-warning mt-2">Ver todos los recorridos</button>
+           
             </div>
-            <div class="col"></div>
-            <div class="col"></div>
         </div>
 
         <router-outlet />
