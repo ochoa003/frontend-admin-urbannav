@@ -14,10 +14,6 @@
         <h1 class="mt-2">Hola, administrador! </h1>
         <pre class="text-white">{{ user() | json }}</pre>
 
-        <button type="button" class="btn btn-primary" (click)="abrirModal()">
-            Abrir Modal
-          </button>
-
         <div class="row p-4">
             <div class="col">
                 <h3 class="text-warning">Variables globales</h3>
@@ -32,7 +28,7 @@
                     <!-- submit btn -->
                     <button type="submit" class="btn btn-primary mt-2">Guardar</button>
                 </form>
-                <button class="btn btn-warning mt-2">Ver todas las variables</button>
+                <button class="btn btn-warning mt-2" (click)="verVariablesGlobales()">Ver todas las variables</button>
             </div>
             <div class="col">
                 <h3 class="text-warning">Ciudades</h3>
@@ -47,7 +43,7 @@
                     <!-- submit btn -->
                     <button type="submit" class="btn btn-primary mt-2">Guardar</button>
                 </form>
-                <button class="btn btn-warning mt-2">Ver todas las Ciudades</button>
+                <button class="btn btn-warning mt-2" (click)="verCiudades()">Ver todas las Ciudades</button>
             </div>
             <div class="col">
                 
@@ -69,7 +65,7 @@
                   
                     <button type="submit" class="btn btn-primary mt-2">Guardar</button>
                 </form>
-                <button class="btn btn-warning mt-2">Ver todos los barrios</button>
+                <button class="btn btn-warning mt-2" (click)="verBarrios()">Ver todos los barrios</button>
                
             </div>
             <div class="col">
@@ -93,7 +89,7 @@
 
                     <button type="submit" class="btn btn-primary mt-2">Guardar</button>
                 </form>
-                <button class="btn btn-warning mt-2">Ver todos los recorridos</button>
+                <button class="btn btn-warning mt-2" (click)="verRecorridos()">Ver todos los recorridos</button>
            
             </div>
         </div>

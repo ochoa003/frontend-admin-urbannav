@@ -60,6 +60,26 @@ export class DashboardLayoutComponent {
     this.obtenerBarrios()
   }
 
+  verVariablesGlobales() {
+    this.dashboardService.cambiarOpcionVisualizacion('VER_VARIABLES');
+    this.abrirModal()
+  }
+
+  verCiudades() {
+    this.dashboardService.cambiarOpcionVisualizacion('VER_CIUDADES');
+    this.abrirModal()
+  }
+
+  verBarrios() {
+    this.dashboardService.cambiarOpcionVisualizacion('VER_BARRIOS');
+    this.abrirModal()
+  }
+
+  verRecorridos() {
+    this.dashboardService.cambiarOpcionVisualizacion('VER_RECORRIDOS');
+    this.abrirModal()
+  }
+
   onLogout() {
     const logoutOk = this.authService.logout();
     console.log(logoutOk)

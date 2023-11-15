@@ -1,6 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, computed, inject, signal } from '@angular/core';
 
+// const opciones = {
+//   verVariables: 'VER_VARIABLES',
+//   verCiudades: 'VER_CIUDADES',
+//   verBarrios: 'VER_BARRIOS',
+//   verRecorridos: 'VER_RECORRIDOS',
+// }
+
 @Injectable({
   providedIn: 'root'
 })
@@ -9,12 +16,18 @@ export class DashboardServiceService {
   private http = inject( HttpClient );
 
   private _informacionActual = signal<any|null>(null);
+  public opcionActual = signal<string|null>(null);
 
   //? Al mundo exterior!
   public currentInfo = computed( () => this._informacionActual() );
+  // public currentOption = computed( () => this._opcionActual() );
 
   constructor() { 
     console.log('DashboardService funcionando')
+  }
+
+  cambiarOpcionVisualizacion( opcion: string ) {
+    this.opcionActual = signal<string|null>(opcion);
   }
 
   crearVariable( nombreVariable: string, valorVariable: string ) {
