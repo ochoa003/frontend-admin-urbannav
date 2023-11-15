@@ -26,6 +26,14 @@ export class DashboardServiceService {
     console.log('DashboardService funcionando')
   }
 
+  obtenerUsuarios() {
+    return this.http.get('http://localhost:3001/usuario' , {
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
+      }
+    })
+  }
+
   cambiarOpcionVisualizacion( opcion: string ) {
     this.opcionActual = signal<string|null>(opcion);
   }

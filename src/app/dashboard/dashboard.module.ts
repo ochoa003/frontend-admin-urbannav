@@ -6,11 +6,13 @@ import { DashboardLayoutComponent } from './layouts/dashboard-layout/dashboard-l
 import { ReactiveFormsModule } from '@angular/forms';
 import { ModalComponent } from './components/modal/modal.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { UsersComponent } from './pages/users/users.component';
 
 @NgModule({
   declarations: [
     DashboardLayoutComponent,
-    ModalComponent
+    ModalComponent,
+    UsersComponent
   ],
   imports: [
     CommonModule,
