@@ -48,12 +48,24 @@ export class DashboardServiceService {
     return this.http.get('http://localhost:3000/ciudad')
   }
 
+  obtenerVariables() {
+    return this.http.get('http://localhost:3001/variable', {
+        headers: {
+          'Authorization': `Bearer ${localStorage.getItem('token')}`
+        }
+    })
+  }
+
   obtenerBarrios() {
     return this.http.get('http://localhost:3000/barrio', {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`
         }
     })
+  }
+
+  obtenerRecorridos() {
+      return this.http.get('http://localhost:3000/recorrido')
   }
 
   crearRecorrido( DistanciaKM: number, barrioOrigenId: number, barrioDestinoId: number ) {

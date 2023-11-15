@@ -11,8 +11,8 @@
 
       </nav>
       <div class="container-fluid">
-        <h1 class="mt-2">Hola, administrador! </h1>
-        <pre class="text-white">{{ user() | json }}</pre>
+        <h1 class="mt-2">Hola, <span class="text-info">administrador</span>! </h1>
+        <!-- <pre class="text-white">{{ user() | json }}</pre> -->
 
         <div class="row p-4">
             <div class="col">
@@ -79,12 +79,12 @@
 
                     <select class="form-select mt-2" aria-label="Default select example" formControlName="barrioOrigenId">
                         <option value="default">Selecciona un barrio de origen<option>
-                        <option *ngFor="let barrio of this.barrios()" [value]="barrio.idBarrio" >{{ barrio.nombreBarrio }} - {{ barrio.ciudadId }}</option>
+                        <option *ngFor="let barrio of this.barrios()" [value]="barrio.barrioId" >{{ barrio.barrio }} - {{ barrio.ciudad }}</option>
                       </select>
 
                     <select class="form-select mt-2" aria-label="Default select example" formControlName="barrioDestinoId">
                         <option value="default">Selecciona un barrio de destino<option>
-                        <option *ngFor="let barrio of this.barrios()" [value]="barrio.idBarrio" >{{ barrio.nombreBarrio }} - {{ barrio.ciudadId }}</option>
+                        <option *ngFor="let barrio of this.barrios()" [value]="barrio.barrioId" >{{ barrio.barrio }} - {{ barrio.ciudad }}</option>
                       </select>
 
                     <button type="submit" class="btn btn-primary mt-2">Guardar</button>

@@ -17,8 +17,13 @@ export class DashboardLayoutComponent {
 
   private modalService = inject( BsModalService );
 
-  abrirModal() {
-    this.bsModalRef = this.modalService.show(ModalComponent);
+  abrirModal(accion: string) {
+    this.bsModalRef = this.modalService.show(ModalComponent , {
+      class: 'modal-lg',
+      initialState: {
+        accion
+      }
+    });
   }
 
   private authService = inject( AuthService );
@@ -62,22 +67,22 @@ export class DashboardLayoutComponent {
 
   verVariablesGlobales() {
     this.dashboardService.cambiarOpcionVisualizacion('VER_VARIABLES');
-    this.abrirModal()
+    this.abrirModal('VER_VARIABLES')
   }
 
   verCiudades() {
     this.dashboardService.cambiarOpcionVisualizacion('VER_CIUDADES');
-    this.abrirModal()
+    this.abrirModal('VER_CIUDADES')
   }
 
   verBarrios() {
     this.dashboardService.cambiarOpcionVisualizacion('VER_BARRIOS');
-    this.abrirModal()
+    this.abrirModal('VER_BARRIOS')
   }
 
   verRecorridos() {
     this.dashboardService.cambiarOpcionVisualizacion('VER_RECORRIDOS');
-    this.abrirModal()
+    this.abrirModal('VER_RECORRIDOS')
   }
 
   onLogout() {
