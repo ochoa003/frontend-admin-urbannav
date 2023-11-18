@@ -39,7 +39,11 @@ export class LoginPageComponent {
         next: (user: any) => {
           this.usuarioId = user._id;
           console.log(this.usuarioId)
-          this.estaEn2FA = true;
+          if(!this.usuarioId) {
+            Swal.fire('Error', 'Usuario o contraseña incorrectos', 'error');
+          } else {
+            this.estaEn2FA = true;
+          }
         },
         error: (err) => {
           Swal.fire('Error', err, 'error');
@@ -53,8 +57,9 @@ export class LoginPageComponent {
 
     this.authService.verificar2FA( this.usuarioId, codigo2fa )
       .subscribe({
-        next: () => {
-          console.log('autenticado')
+        next: (data) => {
+          console.log("autenticar", data)
+          // this.authService.setAuthentication( this.usuarioId );
         },
         error: (err) => {
           Swal.fire('Error', err, 'error');

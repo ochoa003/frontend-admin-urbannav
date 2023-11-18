@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environments';
 import { LoginResponse, User } from '../interfaces';
 import { AuthStatus } from '../interfaces/auth-status.enum';
 import { CheckTokenResponse } from '../interfaces/check-token.response';
+import Swal from 'sweetalert2';
 
 @Injectable({
   providedIn: 'root'
@@ -25,7 +26,7 @@ export class AuthService {
     this.checkAuthStatus().subscribe();
   }
 
-  private setAuthentication( user: any, token: string ): boolean {
+  public setAuthentication( user: any, token: string ): boolean {
     this._currentUser.set( user );
     this._authStatus.set( AuthStatus.authenticated );
     localStorage.setItem('token', token);
@@ -52,6 +53,13 @@ export class AuthService {
         )
   }
 
+  autenticar() {
+    // this._currentUser.set({
+    //   correo: resp.email,
+    //   _id: resp.idMongoDB,
+    // });
+  }
+
   verificar2FA( usuarioId: string, codigo2fa: string ): Observable<boolean> {
 
     const data = { usuarioId, codigo2fa };
@@ -75,6 +83,9 @@ export class AuthService {
           return true;
         }),
         catchError( err => {
+          this._currentUser.set( null );
+          this._authStatus.set( AuthStatus.notAuthenticated );
+          Swal.fire('Error', 'Ups... Código no válido', 'error');
           return of(false);
         })
       )
