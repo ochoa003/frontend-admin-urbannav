@@ -38,4 +38,45 @@ export class UsersComponent {
     
   }
 
+  inactivarUsuario(id: number, rolId : string) {
+    const idClienteRol = '65243b86591891311c031c97';
+    const idConductorRol = '65243b9b591891311c031c98';
+    let rol = ""
+    if(rolId === idClienteRol) {
+      rol = 'CLIENTE'
+    } else if(rolId === idConductorRol) {
+      rol = 'CONDUCTOR'
+    }
+    this.dashboardService.inactivarUsuario(id, rol).subscribe({
+      next: (data: any) => {
+        console.log(data)
+        this.ngOnInit()
+      },
+      error: (error: any) => {
+        console.log(error)
+      }
+    })
+  }
+
+  activarUsuario(id: number, rolId : string) {
+    const idClienteRol = '65243b86591891311c031c97';
+    const idConductorRol = '65243b9b591891311c031c98';
+    let rol = ""
+    if(rolId === idClienteRol) {
+      rol = 'CLIENTE'
+    } else if(rolId === idConductorRol) {
+      rol = 'CONDUCTOR'
+    }
+    this.dashboardService.activarUsuario(id, rol).subscribe({
+      next: (data: any) => {
+        console.log(data)
+        this.ngOnInit()
+      },
+      error: (error: any) => {
+        console.log(error)
+      }
+    })
+  }
+
+
 }

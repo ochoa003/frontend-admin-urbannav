@@ -121,4 +121,18 @@ export class AuthService {
     return null;
   }
 
+  recuperarContrasena(correo: string){
+    const url = `http://localhost:3001/recuperar-clave`;
+    return this.http.post<any>( url, { correo } )
+      .pipe(
+        map( resp => {
+          console.log(resp)
+          return resp
+        }),
+        catchError( err => {
+          return of(false);
+        })
+      )
+  }
+
 }

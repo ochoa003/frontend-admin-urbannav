@@ -73,5 +73,32 @@ export class LoginPageComponent {
     return cadenaCifrada;
   }
 
+  recuperarContrasena() {
+    Swal.fire({
+      title: 'Recuperar contraseña',
+      html:
+        '<input id="swal-input2" class="swal2-input" placeholder="Correo electrónico">',
+      focusConfirm: false,
+      preConfirm: () => {
+        return [
+          (document.getElementById('swal-input2') as HTMLInputElement).value,
+        ];
+      },
+    }).then((result) => {
+      if (result.isConfirmed){
+        console.log(result.value![0])
+        this.authService.recuperarContrasena(result.value![0])
+          .subscribe({
+            next: (data) => {
+              console.log(data)
+              Swal.fire('Exito', 'Se ha enviado la nueva contraseña a tu correo', 'success');
+            },
+            error: (err) => {
+              Swal.fire('Error', err, 'error');
+            }
+          })
+      }
+    })
+  }
 
 }
