@@ -53,7 +53,7 @@ export class DashboardLayoutComponent {
   });
 
   public myFormRecorrido: FormGroup = this.fb.group({
-    DistanciaKM: [0, [Validators.required] ],
+    DistanciaKM: [0, [Validators.required, Validators.min(1)] ],
     barrioOrigenId: ['default', [Validators.required,]],
     barrioDestinoId: ['default', [Validators.required,]],
   });
@@ -63,6 +63,7 @@ export class DashboardLayoutComponent {
   constructor() {
     this.obtenerCiudades()
     this.obtenerBarrios()
+   
   }
 
   verVariablesGlobales() {
@@ -149,8 +150,8 @@ export class DashboardLayoutComponent {
     this.dashboardService.obtenerBarrios()
       .subscribe({
         next: (data) => {
-          this.barrios = signal<any|null>(data);
           console.log(data)
+          this.barrios = signal<any|null>(data);
         },
         error: (err) => {
           console.log(err)
@@ -207,7 +208,7 @@ export class DashboardLayoutComponent {
     const barrioOrigenId = this.myFormRecorrido.get('barrioOrigenId')?.value;
     const barrioDestinoId = this.myFormRecorrido.get('barrioDestinoId')?.value;
 
-    if(barrioOrigenId !== 'default' && barrioDestinoId !== 'default') {
+    if(barrioOrigenId !== 'default' && barrioDestinoId !== 'default' && DistanciaKM > 0) {
       console.log(DistanciaKM, barrioOrigenId, barrioDestinoId)
 
       this.dashboardService.crearRecorrido( DistanciaKM, Number(barrioOrigenId), Number(barrioDestinoId) )

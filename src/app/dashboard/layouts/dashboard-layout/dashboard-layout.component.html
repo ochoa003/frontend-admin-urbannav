@@ -80,12 +80,12 @@
 
                     <select class="form-select mt-2" aria-label="Default select example" formControlName="barrioOrigenId">
                         <option value="default">Selecciona un barrio de origen<option>
-                        <option *ngFor="let barrio of this.barrios()" [value]="barrio.barrioId" >{{ barrio.barrio }} - {{ barrio.ciudad }}</option>
+                        <option *ngFor="let barrio of this.barrios()" [value]="barrio.idBarrio" >{{ barrio.nombreBarrio }} - {{ barrio.ciudad.Nombre }}</option>
                       </select>
 
                     <select class="form-select mt-2" aria-label="Default select example" formControlName="barrioDestinoId">
                         <option value="default">Selecciona un barrio de destino<option>
-                        <option *ngFor="let barrio of this.barrios()" [value]="barrio.barrioId" >{{ barrio.barrio }} - {{ barrio.ciudad }}</option>
+                        <option *ngFor="let barrio of this.barrios()" [value]="barrio.idBarrio" >{{ barrio.nombreBarrio }} - {{ barrio.ciudad.Nombre }}</option>
                       </select>
 
                     <button type="submit" class="btn btn-primary mt-2">Guardar</button>

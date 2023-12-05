@@ -39,11 +39,11 @@ import { DashboardServiceService } from '../../services/dashboard-service.servic
       </div>
 
       <div *ngIf="this.dashboardService.opcionActual() === 'VER_BARRIOS'">
-        <div class="alert alert-info" *ngFor="let barrio of this.barrios">{{ barrio.barrio }}: {{ barrio.ciudad }}</div>
+        <div class="alert alert-info" *ngFor="let barrio of this.barrios">{{ barrio.nombreBarrio }}: {{ barrio.ciudad.Nombre }}</div>
       </div>
 
       <div *ngIf="this.dashboardService.opcionActual() === 'VER_RECORRIDOS'">
-        <div class="alert alert-info" *ngFor="let recorrido of this.recorridos">{{ recorrido.barrioOrigen.nombreBarrio }} - {{ recorrido.barrioDestino.nombreBarrio }} - {{ recorrido.recorrido.DistanciaKM }} Kms de distancia</div>
+        <div class="alert alert-info" *ngFor="let recorrido of this.recorridos">{{ recorrido.barrioOrigen.nombreBarrio }} - {{ recorrido.barrioDestino.nombreBarrio }} - {{ recorrido.DistanciaKM }} Kms de distancia</div>
       </div>
 
     </div>
@@ -122,6 +122,7 @@ export class ModalComponent {
   listarBarrios(): any {
     this.dashboardService.obtenerBarrios().subscribe({
       next: (data: any) => {
+        console.log(data)
         this.barrios = data;
         this.loading = false
       },

@@ -18,10 +18,21 @@
               </div>
         </div>
 
-        <div *ngIf="!loading" class="container">
+        <div *ngIf="!loading" class="container mb-2">
             <h1 class="text-warning mt-2">Usuarios</h1>
             <hr>
-            <div class="alert alert-info" *ngFor="let u of this.usuarios">Usuario: {{ u.usuario.correo }}</div>
+            <div *ngFor="let u of this.usuariosArray()">
+                <div *ngIf="u.usuario.rolId === '65145f6950ef6641e8e8d370'" class="alert alert-info">
+                    Admin: {{u.usuarioLogica.primerNombre}}
+                </div>
+                <div *ngIf="u.usuario.rolId === '65243b86591891311c031c97'" class="alert alert-warning">
+                    Cliente: {{u.usuarioLogica.primerNombre}}
+                </div>
+                <div *ngIf="u.usuario.rolId === '65243b9b591891311c031c98'" class="alert alert-success">
+                    Conductor: {{u.usuarioLogica.primerNombre}}
+                </div>
+
+            </div>
         </div>
     </main>
 </div>

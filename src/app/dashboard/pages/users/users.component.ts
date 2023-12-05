@@ -14,7 +14,13 @@ export class UsersComponent {
   public dashboardService = inject( DashboardServiceService )
 
   public usuariosArray() {
-    return this.usuarios;
+    const usuariosValidos: any[] = []
+    this.usuarios.forEach((usuario: any) => {
+      if(usuario.usuarioLogica) {
+        usuariosValidos.push(usuario)
+      }
+    })
+    return usuariosValidos;
   }
 
   ngOnInit(): void {
