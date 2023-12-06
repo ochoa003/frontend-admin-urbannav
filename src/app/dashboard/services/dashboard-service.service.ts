@@ -114,7 +114,7 @@ export class DashboardServiceService {
       })
     }
     if (rol === 'CONDUCTOR') {
-      return this.http.patch(`http://localhost:3000/counductor/${id}`, {
+      return this.http.patch(`http://localhost:3000/conductor/${id}`, {
         estado: "INACTIVO"
       }, {
         headers: {
@@ -139,7 +139,7 @@ export class DashboardServiceService {
       })
     }
     if (rol === 'CONDUCTOR') {
-      return this.http.patch(`http://localhost:3000/counductor/${id}`, {
+      return this.http.patch(`http://localhost:3000/conductor/${id}`, {
         estado: "ACTIVO"
       }, {
         headers: {
@@ -151,5 +151,39 @@ export class DashboardServiceService {
       observer.next(false); // Emite el valor false
       observer.complete();   // Completa el observable
     });
+  }
+
+  crearJustificacionCliente(descripcion: string, clienteId: number, administradorId: number) {
+    return this.http.post('http://localhost:3000/justificacion-cliente', {
+      fechahora: new Date(),
+      Descripcion: descripcion,
+      clienteId,
+      administradorId
+    }, {
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
+      }
+    })
+  }
+
+  crearJustificacionConductor(descripcion: string, conductorId: number, administradorId: number) {
+    return this.http.post('http://localhost:3000/justificacion-conductor', {
+      fechahora: new Date(),
+      Descripcion: descripcion,
+      conductorId,
+      administradorId
+    }, {
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
+      }
+    })
+  }
+
+  obtenerAdminInfo(id: string) {
+    return this.http.get(`http://localhost:3001/usuario/${id}`, {
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
+      }
+    })
   }
 }

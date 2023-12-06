@@ -8,7 +8,7 @@ export const isAuthenticatedGuard: CanActivateFn = (route, state) => {
   const authService = inject( AuthService );
 
   if( authService.authStatus() === AuthStatus.authenticated ) {
-    Swal.fire('Hola de nuevo!', 'Autenticado correctamente', 'success');
+    // Swal.fire('Hola de nuevo!', 'Autenticado correctamente', 'success');
     return true;
   }
 

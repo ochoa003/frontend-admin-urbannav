@@ -7,6 +7,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ModalComponent } from './components/modal/modal.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { UsersComponent } from './pages/users/users.component';
+import { AuthModule } from '../auth/auth.module';
+import { RecaptchaModule } from "ng-recaptcha";
+import { BrowserModule } from "@angular/platform-browser";
 
 @NgModule({
   declarations: [
@@ -18,7 +21,9 @@ import { UsersComponent } from './pages/users/users.component';
     CommonModule,
     DashboardRoutingModule,
     ReactiveFormsModule,
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    AuthModule,
+    RecaptchaModule,
   ]
 })
 export class DashboardModule { }

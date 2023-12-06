@@ -25,13 +25,23 @@
                 <div *ngIf="u.usuario.rolId === '65145f6950ef6641e8e8d370'" class="alert alert-info">
                     Admin: {{u.usuarioLogica.primerNombre}}
                 </div>
-                <div *ngIf="u.usuario.rolId === '65243b86591891311c031c97'" class="alert alert-warning">
+                <div *ngIf="u.usuario.rolId === '65243b86591891311c031c97'" class="alert alert-warning d-flex justify-content-between">
+                   <div>
                     Cliente: {{u.usuarioLogica.primerNombre}} - {{u.usuarioLogica.primerApellido}} - {{u.usuario._id}}:{{u.usuarioLogica.estado}} 
+                   </div>
+                   <div>
                     <button *ngIf="u.usuarioLogica.estado === 'ACTIVO' " class="btn btn-outline-danger" (click)="this.inactivarUsuario(u.usuarioLogica.idCliente, u.usuario.rolId)">Inactivar</button>
                     <button *ngIf="u.usuarioLogica.estado === 'INACTIVO' " class="btn btn-outline-success" (click)="this.activarUsuario(u.usuarioLogica.idCliente, u.usuario.rolId)">Activar</button>
+                   </div>
                 </div>
-                <div *ngIf="u.usuario.rolId === '65243b9b591891311c031c98'" class="alert alert-success">
-                    Conductor: {{u.usuarioLogica.primerNombre}} - {{u.usuarioLogica.primerApellido}} - {{u.usuario._id}}:{{u.usuarioLogica.estado}} <button class="btn btn-outline-danger" (click)="this.inactivarUsuario(u.usuarioLogica.idConductor, u.usuario.rolId)">Inactivar</button>
+                <div *ngIf="u.usuario.rolId === '65243b9b591891311c031c98'" class="alert alert-success d-flex justify-content-between">
+                    <div>
+                        Conductor: {{u.usuarioLogica.primerNombre}} - {{u.usuarioLogica.primerApellido}} - {{u.usuario._id}}:{{u.usuarioLogica.estado}}
+                    </div>
+                   <div>
+                    <button *ngIf="u.usuarioLogica.estado === 'ACTIVO' " class="btn btn-outline-danger" (click)="this.inactivarUsuario(u.usuarioLogica.idConductor, u.usuario.rolId)">Inactivar</button>
+                    <button *ngIf="u.usuarioLogica.estado === 'INACTIVO' " class="btn btn-outline-success" (click)="this.activarUsuario(u.usuarioLogica.idConductor, u.usuario.rolId)">Activar</button>
+                   </div>
                 </div>
 
             </div>
