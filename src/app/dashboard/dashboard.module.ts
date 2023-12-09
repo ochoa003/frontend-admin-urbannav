@@ -10,12 +10,14 @@ import { UsersComponent } from './pages/users/users.component';
 import { AuthModule } from '../auth/auth.module';
 import { RecaptchaModule } from "ng-recaptcha";
 import { BrowserModule } from "@angular/platform-browser";
+import { ChartsComponent } from './pages/charts/charts.component';
 
 @NgModule({
   declarations: [
     DashboardLayoutComponent,
     ModalComponent,
-    UsersComponent
+    UsersComponent,
+    ChartsComponent,
   ],
   imports: [
     CommonModule,
