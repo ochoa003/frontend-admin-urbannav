@@ -14,6 +14,7 @@ export class ChartsComponent implements  OnInit {
   public barriosPorCiudadX: any[] = [];
   public barriosPorCiudadY: any[] = [];
 
+
   //inject dashboard service using inject sintaxis
   constructor(private dashboardService: DashboardServiceService) { }
 
@@ -51,14 +52,39 @@ export class ChartsComponent implements  OnInit {
         })
 
         console.log(this.barriosPorCiudadX, this.barriosPorCiudadY)
-        this.createChart('MyChart', 'Barrios por ciudad', this.barriosPorCiudadX, this.barriosPorCiudadY);
-        
+        this.createChart('MyChart', 'Barrios por ciudad', this.barriosPorCiudadX, this.barriosPorCiudadY, "cyan");
+      })
+
+      this.dashboardService.obtenerViajes().subscribe((viajes: any) => {
+        viajes.forEach((viaje: any)  => {
+          console.log(viaje)
+          const fechahora = viaje.fechahoraInicio.split('T')[0]
+
+          //agrupar por fecha (cantidad de viajes)
+          let viajesPorFecha: any[] = [];
+          let fechas: any[] = [];
+          viajes.forEach((viaje: any) => {
+            if (!fechas.includes(viaje.fechahoraInicio.split('T')[0])) {
+              fechas.push(viaje.fechahoraInicio.split('T')[0])
+            }
+          })
+          fechas.forEach((fecha: any) => {
+            let viajesFiltrados = viajes.filter((viaje: any) => viaje.fechahoraInicio.split('T')[0] === fecha)
+            viajesPorFecha.push({
+              fecha: fecha,
+              cantidadViajes: viajesFiltrados.length
+            })
+          })
+          console.log(viajesPorFecha)
+
+          this.createChart('MyChart2', 'Viajes por fecha', fechas, viajesPorFecha.map((viaje: any) => viaje.cantidadViajes), "yellow");
+        })
       })
 
 
     }
 
-    createChart(selector: string, titulo: string, x: any[], y: any[]){
+    createChart(selector: string, titulo: string, x: any[], y: any[], color: string){
 
       this.chart = new Chart(selector, {
         type: 'bar', //this denotes tha type of chart
@@ -69,7 +95,7 @@ export class ChartsComponent implements  OnInit {
             {
               label: titulo,
               data:y,
-              backgroundColor: 'cyan'
+              backgroundColor: color
             },
           ]
         },

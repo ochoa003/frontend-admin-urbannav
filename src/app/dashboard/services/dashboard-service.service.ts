@@ -73,6 +73,10 @@ export class DashboardServiceService {
     })
   }
 
+  obtenerViajes() {
+    return this.http.get('http://localhost:3000/viaje')
+  }
+
   obtenerRecorridos() {
     return this.http.get('http://localhost:3000/recorrido?filter={"include":[{"relation":"barrioOrigen"},{"relation":"barrioDestino"}]}')
   }
