@@ -87,6 +87,10 @@ export class LoginPageComponent {
     }).then((result) => {
       if (result.isConfirmed){
         console.log(result.value![0])
+        if(result.value![0] === '') {
+          Swal.fire('Error', 'Debes ingresar un correo', 'error');
+          return;
+        }
         this.authService.recuperarContrasena(result.value![0])
           .subscribe({
             next: (data) => {
